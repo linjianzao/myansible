@@ -1,0 +1,12 @@
+---
+
+- name: set apt sources  
+  copy: src=sources.list dest=/etc/apt/sources.list
+
+- name: add nginx_signing.key  
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key 
+    state: present
+
+- name: apt-get update  
+  command: apt update 

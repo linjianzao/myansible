@@ -1,0 +1,9 @@
+---
+# init xenial
+
+- name: set apt sources
+  hosts: all
+  remote_user: root
+
+  roles:
+    - xenial_init
