@@ -9,4 +9,4 @@
     state: present
 
 - name: apt-get update  
-  command: apt update 
+  command: apt update -y
