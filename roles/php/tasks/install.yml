@@ -1,0 +1,23 @@
+---
+- name: python-software-properties
+  apt: 
+   name: python-software-properties
+   state: present
+
+- name: add php ppa repo
+  apt_repository:
+    repo: ppa:ondrej/php
+
+
+- name: Install php
+  shell: apt install php{{lang_php_ver}}-php  
+
+#  apt: 
+#   name: "{{ item }}"
+#   with_items:  
+#    - php{{lang_php_ver}}-php
+#    - php{{lang_php_ver}}-php-devel
+#    - php{{lang_php_ver}}-php-fpm
+#    - php{{lang_php_ver}}-php-fpm
+#   state: present
+

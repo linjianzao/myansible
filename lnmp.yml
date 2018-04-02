@@ -1,0 +1,14 @@
+---
+# lnmp
+
+- name: install lnmp
+  hosts: webservers
+  remote_user: root
+  roles:
+    - php
+
+#- name: install mysql
+#  hosts: dbservers
+#  remote_user: root
+#  roles:
+#    - mysql

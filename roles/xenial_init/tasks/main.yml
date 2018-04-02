@@ -8,5 +8,9 @@
     url: http://nginx.org/keys/nginx_signing.key 
     state: present
 
-- name: apt-get update  
-  command: apt update -y
+- name: apt-get update  cache 
+  shell: "{{ item }}"
+  with_items:
+   - apt update 
+
+

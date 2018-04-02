@@ -1,0 +1,7 @@
+---
+- name: reload php fpm
+  service: >-
+    name=php{{lang_php_ver}}-php-fpm
+    state=reloaded
+
+# handlers file for php
