@@ -1,0 +1,15 @@
+---
+app_php_port: 9000
+app_php_fpm_backlog: 65535
+app_php_fpm_priority: -19
+app_php_fpm_pm: dynamic
+app_php_fpm_max_children: 300
+app_php_fpm_start_servers: 10
+app_php_fpm_min_spare_servers: 10
+app_php_fpm_max_spare_servers: 20
+app_php_fpm_max_requests: 500
+app_php_base_url: ''
+app_php_server_name: '{{domain_name}} {{wap_domain_name}}'
+
+
+

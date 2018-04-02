@@ -1,0 +1,18 @@
+[{{ app_name }}]
+user = {{ deploy_user }}
+group = {{ deploy_user }}
+listen = 127.0.0.1:{{ app_php_port }}
+listen.backlog = {{ app_php_fpm_backlog }}
+listen.allowed_clients = 127.0.0.1
+process.priority = {{app_php_fpm_priority }}
+
+pm = {{ app_php_fpm_pm }}
+pm.max_children = {{ app_php_fpm_max_children }}
+{% if app_php_fpm_pm == 'dynamic' %}
+
+pm.start_servers = {{ app_php_fpm_start_servers }}
+pm.min_spare_servers = {{ app_php_fpm_min_spare_servers }}
+pm.max_spare_servers = {{ app_php_fpm_max_spare_servers }}
+pm.max_requests = {{ app_php_fpm_max_requests }}
+
+{% endif %}

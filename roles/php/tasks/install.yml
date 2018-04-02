@@ -10,14 +10,9 @@
 
 
 - name: Install php
-  shell: apt install php{{lang_php_ver}}-php  
-
-#  apt: 
-#   name: "{{ item }}"
-#   with_items:  
-#    - php{{lang_php_ver}}-php
-#    - php{{lang_php_ver}}-php-devel
-#    - php{{lang_php_ver}}-php-fpm
-#    - php{{lang_php_ver}}-php-fpm
-#   state: present
+  apt: name={{ item }}  state=present
+  with_items:  
+   - php{{ lang_php_ver }}-cli
+   - php{{ lang_php_ver }}-fpm
+   - php{{ lang_php_ver }}-dev
 

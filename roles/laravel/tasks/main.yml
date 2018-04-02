@@ -1,0 +1,14 @@
+---
+#- name: laravel fpm config
+#  template: >-
+#    src=php-fpm.pool.conf.j2
+#    dest={{ lang_php_etc }}/php/{{ lang_php_ver }}/{{ app_name }}.conf
+#    owner=root
+#    group=root
+#    mode=0755
+#  no_log: yes
+#  changed_when: yes
+#  notify:
+#    - reload php fpm
+#  tags: ['app']
+

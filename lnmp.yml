@@ -5,7 +5,9 @@
   hosts: webservers
   remote_user: root
   roles:
+    - nginx
     - php
+    #- laravel
 
 #- name: install mysql
 #  hosts: dbservers
