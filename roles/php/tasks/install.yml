@@ -16,3 +16,8 @@
    - php{{ lang_php_ver }}-fpm
    - php{{ lang_php_ver }}-dev
 
+- name: configure php-fpm
+  copy: src=www.conf dest=/etc/php/7.1/fpm/pool.d/www.conf
+  changed_when: yes
+  notify: 
+   - restart php-fpm

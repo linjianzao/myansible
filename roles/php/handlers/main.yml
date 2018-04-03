@@ -1,7 +1,4 @@
 ---
-- name: reload php fpm
-  service: >-
-    name=php-fpm{{lang_php_ver}}
-    state=reloaded
+- name: restart php-fpm
+  command: /etc/init.d/php{{lang_php_ver}}-fpm restart
 
-# handlers file for php
