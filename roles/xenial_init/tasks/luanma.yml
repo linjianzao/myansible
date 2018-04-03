@@ -1,0 +1,74 @@
+---
+#解决乱码问题开始
+- name: luanma 
+  apt: 
+   name: language-pack-zh-hans
+   state: present
+
+
+- name: check LANG="zh_CN.UTF-8" to /etc/environment
+  shell: awk '/LANG="zh_CN\.UTF-8"/' /etc/environment
+  register: environment_LANG
+
+
+- name: add  LANG="zh_CN.UTF-8" to /etc/environment
+  shell: echo 'LANG="zh_CN.UTF-8"' >> /etc/environment
+  when: environment_LANG.stdout == ''
+
+- name: check LANGUAGE="zh_CN:zh:en_US:en"  to /etc/environment
+  shell: awk '/LANGUAGE="zh_CN:zh:en_US:en"/' /etc/environment
+  register: environment_LANGUAGE
+
+
+- name: add LANGUAGE="zh_CN:zh:en_US:en" to /etc/environment
+  shell: echo 'LANGUAGE="zh_CN:zh:en_US:en"' >> /etc/environment
+  when: environment_LANGUAGE.stdout == ''
+
+
+- name: check /var/lib/locales/supported.d/local  exists
+  stat: 
+   path: /var/lib/locales/supported.d/local
+  register: local_file_exists
+
+- name: create /var/lib/locales/supported.d/local
+  file: 
+   path: /var/lib/locales/supported.d/local
+   state: touch
+  when: local_file_exists.stat.exists == False
+
+
+- name: check en_US.UTF-8 UTF-8 to  /var/lib/locales/supported.d/local
+  shell: awk '/en_US\.UTF-8 UTF\-8/' /var/lib/locales/supported.d/local
+  register: local_en_US_UTF8
+
+- name: add en_US.UTF-8 UTF-8 to  /var/lib/locales/supported.d/local
+  shell: echo 'en_US.UTF-8 UTF-8' >> /var/lib/locales/supported.d/local
+  when: local_en_US_UTF8.stdout == ''
+
+- name: check zh_CN.UTF-8 UTF-8 to  /var/lib/locales/supported.d/local
+  shell: awk '/zh_CN\.UTF-8 UTF\-8/' /var/lib/locales/supported.d/local
+  register: local_zh_CN_UTF8
+
+- name: add zh_CN.UTF-8 UTF-8 to /var/lib/locales/supported.d/local
+  shell: echo 'zh_CN.UTF-8 UTF-8' >> /var/lib/locales/supported.d/local
+  when: local_zh_CN_UTF8.stdout == ''
+
+- name: check zh_CN.GBK GBK to /var/lib/locales/supported.d/local
+  shell: awk '/zh_CN\.GBK GBK/' /var/lib/locales/supported.d/local
+  register: local_zh_CN_GBK
+
+- name: add zh_CN.GBK GBK to /var/lib/locales/supported.d/local
+  shell: echo 'zh_CN.GBK GBK' >> /var/lib/locales/supported.d/local
+  when: local_zh_CN_GBK.stdout == ''
+
+- name: check zh_CN GB2312 to /var/lib/locales/supported.d/local
+  shell: awk '/zh_CN GB2312/' /var/lib/locales/supported.d/local
+  register: local_zh_CN_GB2312
+
+- name: add zh_CN GB2312 to /var/lib/locales/supported.d/local
+  shell: echo 'zh_CN GB2312' >> /var/lib/locales/supported.d/local
+  when: local_zh_CN_GB2312.stdout == ''
+
+- name: run locale-gen
+  shell: locale-gen
+

@@ -19,21 +19,4 @@
    name: git
    state: present
 
-#解决乱码问题开始
-- name: luanma 
-  apt: 
-   name: language-pack-zh-hans
-   state: present
-
-
-- name: check LANG="zh_CN.UTF-8" to /etc/environment
-  shell: awk '/LANG="zh_CN\.UTF-8"/' /etc/environment
-  register: environment_LANG
-
-
-- name: add  LANG="zh_CN.UTF-8" to /etc/environment
-  shell: echo 'LANG="zh_CN.UTF-8"' >> /etc/environment
-  when: environment_LANG.stdout == ''
-
-#解决乱码问题结束
-
+- include: luanma.yml
