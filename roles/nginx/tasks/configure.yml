@@ -1,0 +1,26 @@
+---
+
+- name: configure nginx.conf
+  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
+
+- name: check /var/www/html/test dir
+  stat: 
+   path: /var/www/html/test
+  register: html_test_dir_exists
+
+- name: mkdir /var/www/html/test
+  file: 
+   path: /var/www/html/test
+   state: directory
+  when: html_test_dir_exists.stat.exists == False
+
+- name: cp index.php  
+  template: src=index.php.j2 dest=/var/www/html/test/index.php
+
+- name: configure nginx www.conf
+  template: src=default.conf.j2 dest=/etc/nginx/conf.d/default.conf 
+  changed_when: yes
+  notify: 
+   - reload nginx
+
+
