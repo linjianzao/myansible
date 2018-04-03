@@ -1,0 +1,7 @@
+---
+
+- name: configure mysqld.cnf 
+  copy: src=mysqld.cnf dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+  changed_when: yes
+  notify: 
+   - restart mysql

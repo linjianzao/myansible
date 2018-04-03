@@ -7,10 +7,9 @@
   roles:
     - nginx
     - php
-    #- laravel
 
-#- name: install mysql
-#  hosts: dbservers
-#  remote_user: root
-#  roles:
-#    - mysql
+- name: install mysql
+  hosts: dbservers
+  remote_user: root
+  roles:
+    - mysql
