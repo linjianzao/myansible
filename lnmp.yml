@@ -7,6 +7,7 @@
   roles:
     - nginx
     - php
+    - laravel
 
 - name: install mysql
   hosts: dbservers
