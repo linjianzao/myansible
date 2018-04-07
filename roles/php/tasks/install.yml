@@ -21,3 +21,15 @@
   changed_when: yes
   notify: 
    - restart php-fpm
+
+#- name: install composer
+#  shell: "{{ item }}"
+#  with_items:  
+#   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#   - php composer-setup.php
+#   - php -r "unlink('composer-setup.php');"
+
+
+
+
+
