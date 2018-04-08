@@ -2,6 +2,6 @@
 lang_php_ver: 7.1
 lang_php_prefix: /opt/remi/php{{ lang_php_ver }}/root/usr
 lang_php_etc: '/etc/opt/remi/php{{ lang_php_ver }}'
-lang_php_extensions: ['php{{ lang_php_ver }}-mbstring','php{{ lang_php_ver }}-xml','php{{ lang_php_ver }}-zip']
+lang_php_extensions: ['php{{ lang_php_ver }}-mbstring','php{{ lang_php_ver }}-xml','php{{ lang_php_ver }}-zip','php{{ lang_php_ver }}-mysql']
 
 # defaults file for php
