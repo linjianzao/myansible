@@ -16,6 +16,7 @@
 
 - name: cp index.php  
   template: src=index.php.j2 dest=/var/www/html/test/index.php
+  when: html_test_dir_exists.stat.exists == False
 
 - name: configure nginx www.conf
   template: src=default.conf.j2 dest=/etc/nginx/conf.d/default.conf 
