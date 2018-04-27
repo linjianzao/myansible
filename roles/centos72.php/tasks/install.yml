@@ -1,0 +1,24 @@
+---
+
+- name: Import remi repo
+  yum: >-
+    name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state=present
+
+- name: Install php
+  yum: name={{ item }}  state=present
+  with_items:  
+   - php{{ lang_php_ver }}-php-cli
+   - php{{ lang_php_ver }}-php-fpm
+   - php{{ lang_php_ver }}-php-devel
+
+- name: configure php-fpm
+  copy: src=www.conf dest={{ lang_php_etc }}/php-fpm.d/www.conf 
+  changed_when: yes
+  notify: 
+   - restart php-fpm
+
+
+
+
+

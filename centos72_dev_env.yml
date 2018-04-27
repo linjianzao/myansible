@@ -1,0 +1,19 @@
+---
+
+- name: centos dev env init nginx
+  hosts: webservers
+  remote_user: root
+
+  roles:
+    - geerlingguy.nginx
+    - centos72.php
+    - composer
+
+
+
+#- name: centos dev env init mysql
+#  hosts: dbservers
+#  remote_user: root
+#
+#  roles:
+#    - geerlingguy.mysql
