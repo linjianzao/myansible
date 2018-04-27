@@ -5,7 +5,8 @@ lang_php_etc: '/etc/opt/remi/php{{ lang_php_ver }}'
 lang_php_extensions: ['php{{ lang_php_ver }}-php-mbstring',
                       'php{{ lang_php_ver }}-php-xml',
                       'php{{ lang_php_ver }}-php-zip',
-                      'php{{ lang_php_ver }}-php-mysql'
+                      'php{{ lang_php_ver }}-php-mysql',
+                      'php{{ lang_php_ver }}-php-opcache',
                      ]
 
 # defaults file for php
